@@ -14,7 +14,7 @@ function setup() {
 
   createCanvas(1525, 700, WEBGL);
 
-  slider1 = createSlider(0, 180, 0);
+  slider1 = createSlider(0, 1800, 0);
   slider1.position(10, 30);
   slider1.style('width', '80px');
 
@@ -22,7 +22,7 @@ function setup() {
   greeting.position(11,32);
 
   
-  slider2 = createSlider(1, 10,1);
+  slider2 = createSlider(1, 1000,1);
   slider2.position(120, 30);
   slider2.style('width', '80px');
   
@@ -35,8 +35,8 @@ function setup() {
 function draw() {
   background(0);
   
-  let a1 = slider1.value();
-  let z1 = slider2.value();
+  let a1 = slider1.value()*3.14/1800;
+  let z1 = slider2.value()/100;
   textSize(12);
   textAlign(RIGHT);
   text('Rotate', 10, 40);
