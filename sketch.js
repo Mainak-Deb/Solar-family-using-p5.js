@@ -121,8 +121,8 @@ function draw() {
   rotateY(angle4*speed);
   translate(0,0,472*z1);
   texture(mars);
-  sphere(11)*z1;
-  pop();
+  sphere(11*z1)
+  pop();;
 
 
   angle1+=0.05 ;
