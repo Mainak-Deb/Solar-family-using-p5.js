@@ -22,7 +22,7 @@ function setup() {
   greeting.position(11,32);
 
   
-  slider2 = createSlider(1, 1000,1);
+  slider2 = createSlider(1, 1000,100);
   slider2.position(120, 30);
   slider2.style('width', '80px');
   
