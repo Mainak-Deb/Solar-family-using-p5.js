@@ -3,6 +3,9 @@ let r=400;
 let bg,sun,earth,mercury,venus,mars,jupiter,saturn,uranus,neptune;
 let data,degarr;
 let backval=4;
+let mainrotate=0;
+let animate=false;
+
 function preload() {
 
    bg2=loadImage('bg2.jfif');
@@ -71,6 +74,15 @@ function changeBG(){
 }
 
 
+function changeAnimate(){
+  if(animate){
+    animate=false;
+  }else{
+    animate=true;
+  }
+}
+
+
 function setup() {
 
   createCanvas(1560, 700, WEBGL);
@@ -104,11 +116,13 @@ function setup() {
   //   data[i][2]=setlargest(data[i][2])
   // }
   button = createButton('Background');
-  button.position(1100, 40);
+  button.position(1100, 30);
   button.mousePressed(changeBG);
+
+  button = createButton('Animate');
+  button.position(450, 30);
+  button.mousePressed(changeAnimate);
   print(data)
-
-
 
 }
 
@@ -123,17 +137,22 @@ function draw(){
     let speed = slider3.value()/100;
     angleMode(DEGREES);
 
-    
+   
+   
     textSize(12);
     textAlign(RIGHT);
     text('Rotate', 10, 40);
     if(backval!=0){
       push()
       noStroke();
+      rotateZ(mainrotate/4)
+      rotateY(mainrotate)
+      rotateX(mainrotate*2)
       texture(bgarr[backval]);
       sphere(2000)
       push()
     }
+
     rotateX(a1);
 
    
@@ -144,7 +163,7 @@ function draw(){
       if(i==9){
         rotateX(17)
       }
-
+      
       push()
       noStroke();
       rotateX(90);
@@ -165,7 +184,6 @@ function draw(){
         pointLight(250, 250, 250, 0, -500, 0);
         pointLight(250, 250, 250, -1000, 0, 0);
       }
-      
       degarr[i]=degarr[i]+(360/data[i][3])
       rotateY(degarr[i]*speed);
       translate(0,0,data[i][2]*z1);
@@ -186,7 +204,9 @@ function draw(){
       
     }
     //print(degarr)
-
+    if(animate){
+      mainrotate=(mainrotate+(speed/4))%100000;
+    }
 
 }
 
