@@ -14,6 +14,7 @@ function preload() {
    saturn=loadImage('saturn.jpg');
    uranus=loadImage('uranus.jpg');
    neptune=loadImage('neptune.jpg');
+   pluto=loadImage('pluto.jpg');
 
    M=10000
   // data=[
@@ -27,6 +28,7 @@ function preload() {
   //   ["Uranus",25362,2871*M,(84*365),uranus],
   //   ["Neptune",24622,4495*M,(165*365),neptune]
   // ]
+
   data=[
     ["sun",300,1,(12*365),sun],
     ["Mercury",5,400,88,mercury],
@@ -36,7 +38,8 @@ function preload() {
     ["Jupiter",30,950,(12*365),jupiter],
     ["Saturn",27,1150,(29*365),saturn],
     ["Uranus",22,1250,(84*365),uranus],
-    ["Neptune",20,1450,(165*365),neptune]
+    ["Neptune",20,1450,(165*365),neptune],
+    ["pluto",4,1650,(248*365),pluto]
   ]
   degarr=[0,0,0,0,0,0,0,0,0,0];
 
@@ -115,6 +118,9 @@ function draw(){
 
     //print(data.length)
     for(let i=0;i<data.length;i++){
+      if(i==9){
+        rotateX(17)
+      }
       push()
       noStroke();
       rotateX(90);
@@ -133,11 +139,22 @@ function draw(){
         pointLight(250, 250, 250, 0, -500, 0);
         pointLight(250, 250, 250, -1000, 0, 0);
       }
+      
       degarr[i]=degarr[i]+(360/data[i][3])
       rotateY(degarr[i]*speed);
       translate(0,0,data[i][2]*z1);
       texture(data[i][4]);
       sphere(data[i][1]*z1)
+      if(i==6){
+        push()
+        noStroke();
+        rotateX(90);
+        texture(data[7][4]);
+        torus((data[i][1]+10)*z1, 1,100);
+        torus((data[i][1]+15)*z1, 1,100);
+        torus((data[i][1]+20)*z1, 2,100);
+        pop();
+      }
       //console.log(data[i][0],data[i][1]*z1,data[i][2]*z1)
       pop();
       
