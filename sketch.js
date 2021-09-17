@@ -53,7 +53,8 @@ function setup() {
 
   createCanvas(1525, 700, WEBGL);
 
-  slider1 = createSlider(0, 360, 0);
+  fill(255)
+  slider1 = createSlider(0, 360,320);
   slider1.position(10, 30);
   slider1.style('width', '80px');
 
@@ -66,7 +67,7 @@ function setup() {
   slider2.style('width', '250px');
   
   greeting2 = createElement('h2', 'Zoom');
-  greeting2.position(121,32);
+  greeting2.position(221,32);
 
 
   slider3 = createSlider(0, 500,50);
@@ -74,13 +75,13 @@ function setup() {
   slider3.style('width', '80px');
   
   greeting3 = createElement('h2', 'speed');
-  greeting3.position(210,32);
+  greeting3.position(410,32);
 
   // for(let i=0;i<data.length;i++){
   //   data[i][1]=setlargest(data[i][1])
   //   data[i][2]=setlargest(data[i][2])
   // }
-  
+
   print(data)
 
 
